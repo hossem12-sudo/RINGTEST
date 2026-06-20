@@ -1,0 +1,27 @@
+name: yc_sdk_smoke_test
+description: Minimal Android smoke test for the YCInnovate / Yucheng Flutter SDK.
+publish_to: "none"
+
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  yc_product_plugin:
+    git:
+      url: https://gitee.com/yucheng_3/yc_product_plugin.git
+      path: code/
+      ref: ed5dabd0850edc5d64bb975c9a2f4d65c1344201
+  permission_handler: ^11.3.1
+  path_provider: ^2.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.2
+
+flutter:
+  uses-material-design: true
