@@ -24,6 +24,15 @@ jobs:
         with:
           channel: stable
 
+      - name: Configure git to use a PAT for GitHub package installs
+        if: ${{ secrets.REPO_ACCESS_TOKEN != '' }}
+        env:
+          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+        run: |
+          # Rewrites all https://github.com/ URLs to use https://<token>@github.com/
+          # This allows non-interactive git clones by pub get.
+          git config --global url."https://${REPO_ACCESS_TOKEN}:@github.com/".insteadOf "https://github.com/"
+
       - name: Flutter doctor
         run: flutter doctor -v
 
